@@ -20,29 +20,37 @@ let menu = parseInt(prompt("CPF-ator 2000 \nEscolha uma das opções: \n1. Verif
 
 if (menu == 1) {
     let cpf = prompt("Insira o seu CPF completo (apenas os números)");
-    
-    let array = cpfArray(cpf);
 
-    let dvDigitados = parseInt(array[9] + array[10]);
-    let dvVerificados = `${digitoV1(cpf)}${digitoV2(cpf)}`;
-
-    if (dvDigitados == dvVerificados) {
-        alert("CPF válido");
+    if (cpf.length != 11) {
+        alert("Há algum erro no dado digitado. \nVerifique e tente novamente.")
     } else {
-        alert("CPF inválido");
+        let array = cpfArray(cpf);
+
+        let dvDigitados = parseInt(array[9] + array[10]);
+        let dvVerificados = `${digitoV1(cpf)}${digitoV2(cpf)}`;
+
+        if (dvDigitados == dvVerificados) {
+            alert("CPF válido");
+        } else {
+            alert("CPF inválido");
+        }
     }
 
 } else if (menu == 2) {
-    cpf = prompt("Insira um número de 9 dígitos");
+    let cpf = prompt("Insira um número de 9 dígitos");
 
-    let dv1 = digitoV1(cpf);
-    cpf = cpf + dv1;
+    if (cpf.length != 9) {
+        alert("Há algum erro no dado digitado. \nVerifique e tente novamente.")
+    } else {
+        let dv1 = digitoV1(cpf);
+        cpf = cpf + dv1;
 
-    let dv2 = digitoV2(cpf);
-    cpf = cpf + dv2;
+        let dv2 = digitoV2(cpf);
+        cpf = cpf + dv2;
 
-    alert(`Para esse ser um CPF válido, os dígitos devem ser ${dv1}${dv2} \nCPF válido: ${cpf}`);
-
+        alert(`Para esse ser um CPF válido, os dígitos devem ser ${dv1}${dv2} \nCPF válido: ${cpf}`);
+    }
+    
 } else {
     alert("Opção inválida");
 }
